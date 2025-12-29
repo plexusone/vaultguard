@@ -102,6 +102,76 @@ sv, err := vaultguard.New(&vaultguard.Config{
 })
 ```
 
+## File-Based Configuration
+
+Policies can be loaded from JSON configuration files, supporting both user preferences and enterprise-wide enforcement.
+
+### Configuration Hierarchy
+
+Policies are loaded in order of precedence (highest first):
+
+1. `AGENTPLEXUS_POLICY_FILE` environment variable
+2. User config: `~/.agentplexus/policy.json`
+3. System config: `/etc/agentplexus/policy.json` (Linux/macOS) or `%ProgramData%\agentplexus\policy.json` (Windows)
+
+```go
+// Load policy from configuration files
+policy, err := vaultguard.LoadPolicy()
+if err != nil {
+    log.Fatal(err)
+}
+
+sv, err := vaultguard.New(&vaultguard.Config{
+    Policy: policy,
+})
+```
+
+### User Configuration Example
+
+`~/.agentplexus/policy.json`:
+```json
+{
+  "version": 1,
+  "local": {
+    "min_security_score": 60,
+    "require_encryption": true
+  },
+  "provider_map": {
+    "local": "keyring"
+  }
+}
+```
+
+### Enterprise Configuration Example
+
+System administrators can deploy organization-wide policies with locked fields that users cannot override.
+
+`/etc/agentplexus/policy.json`:
+```json
+{
+  "version": 1,
+  "local": {
+    "min_security_score": 50,
+    "require_encryption": true
+  },
+  "cloud": {
+    "require_iam": true,
+    "aws": {
+      "require_irsa": true,
+      "allowed_account_ids": ["123456789012"]
+    }
+  },
+  "allow_insecure": false,
+  "locked": [
+    "local.require_encryption",
+    "cloud.require_iam",
+    "allow_insecure"
+  ]
+}
+```
+
+When both system and user configs exist, they are merged with system settings taking precedence on locked fields.
+
 ## Convenience Functions
 
 ```go
@@ -208,6 +278,16 @@ func main() {
 ```bash
 go get github.com/agentplexus/vaultguard
 ```
+
+## Documentation
+
+Full documentation is available at [agentplexus.github.io/vaultguard](https://agentplexus.github.io/vaultguard) including:
+
+- [Getting Started Guide](https://agentplexus.github.io/vaultguard/getting-started/)
+- [Policy Overview](https://agentplexus.github.io/vaultguard/policies/overview/)
+- [Enterprise Configuration](https://agentplexus.github.io/vaultguard/policies/enterprise/)
+- [Example Configs](https://agentplexus.github.io/vaultguard/configuration/examples/)
+- [JSON Schema Reference](https://agentplexus.github.io/vaultguard/reference/json-schema/)
 
 ## Dependencies
 

@@ -1,0 +1,65 @@
+site_name: VaultGuard
+site_description: Security-gated credential access for Go applications
+site_url: https://agentplexus.github.io/vaultguard
+repo_url: https://github.com/agentplexus/vaultguard
+repo_name: agentplexus/vaultguard
+
+docs_dir: docsrc
+site_dir: docs
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Policies:
+    - Overview: policies/overview.md
+    - Local Policy: policies/local-policy.md
+    - Cloud Policy: policies/cloud-policy.md
+    - Kubernetes Policy: policies/kubernetes-policy.md
+    - Enterprise Policies: policies/enterprise.md
+  - Configuration:
+    - File Locations: configuration/file-locations.md
+    - Example Configs: configuration/examples.md
+  - Reference:
+    - JSON Schema: reference/json-schema.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/agentplexus/vaultguard

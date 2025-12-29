@@ -135,6 +135,99 @@ vaultguard.StrictPolicy()
 
 ---
 
+# File-Based Configuration 📄
+
+## Separate Policy from Code
+
+```
+Configuration Hierarchy (highest precedence first):
+
+1. 🔧 AGENTPLEXUS_POLICY_FILE environment variable
+2. 👤 User config:   ~/.agentplexus/policy.json
+3. 🏢 System config: /etc/agentplexus/policy.json
+```
+
+```go
+// Load policy from configuration files
+policy, err := vaultguard.LoadPolicy()
+
+sv, err := vaultguard.New(&vaultguard.Config{
+    Policy: policy,  // 📋 From file, not hardcoded
+})
+```
+
+---
+
+# User Configuration 👤
+
+## Personal Preferences
+
+`~/.agentplexus/policy.json`:
+
+```json
+{
+  "version": 1,
+  "local": {
+    "min_security_score": 60,
+    "require_encryption": true
+  },
+  "provider_map": {
+    "local": "keyring"
+  }
+}
+```
+
+**✅ Users can customize their security settings within enterprise constraints.**
+
+---
+
+# Enterprise Policies 🏢
+
+## Organization-Wide Enforcement
+
+`/etc/agentplexus/policy.json`:
+
+```json
+{
+  "version": 1,
+  "local": {
+    "require_encryption": true,
+    "min_security_score": 50
+  },
+  "cloud": {
+    "require_iam": true
+  },
+  "locked": [
+    "local.require_encryption",
+    "cloud.require_iam",
+    "allow_insecure"
+  ]
+}
+```
+
+**🔒 Locked fields cannot be overridden by user configuration.**
+
+---
+
+# Policy Merging 🔀
+
+## Enterprise + User = Final Policy
+
+| Field | Enterprise | User | Result |
+|-------|-----------|------|--------|
+| `require_encryption` | `true` 🔒 | `false` | `true` ✅ |
+| `min_security_score` | `50` | `75` | `75` ✅ |
+| `allow_insecure` | `false` 🔒 | `true` | `false` ✅ |
+
+> **🔒 = Locked field** - Enterprise value always wins
+
+```go
+// User tried to disable encryption, but it's locked
+// Result: encryption still required ✅
+```
+
+---
+
 # Environment Auto-Detection 🔍
 
 ## Runs Anywhere, Adapts Automatically
@@ -402,6 +495,7 @@ Policy: &vaultguard.Policy{
 ┌────────────────────────────────────────────────────────────────┐
 │                         VaultGuard                             │
 ├────────────────────────────────────────────────────────────────┤
+│  config.go       │ 📄 File-based policy loading & merging      │
 │  detect.go       │ 🔍 Environment detection (local/cloud/k8s)  │
 │  policy.go       │ 📋 Security policy definitions & presets    │
 │  local.go        │ 💻 Local security assessment (via Posture)  │
@@ -503,11 +597,12 @@ func (s *SecureToolServer) ExecuteTool(name string, params map[string]any) (any,
 
 1. 🏭 **Always use DefaultPolicy() or StrictPolicy()** in production
 2. 🚫 **Never commit AllowInsecure: true** to version control
-3. 🌍 **Use environment-specific policies** via configuration
-4. 📝 **Log security assessments** for audit trails
-5. 💡 **Handle SecurityError** gracefully with user guidance
-6. 🔄 **Rotate credentials** regularly using your secret backend
-7. 📁 **Restrict namespace access** in Kubernetes deployments
+3. 📄 **Use file-based configuration** to separate policy from code
+4. 🏢 **Deploy enterprise policies** with locked fields for org-wide enforcement
+5. 📝 **Log security assessments** for audit trails
+6. 💡 **Handle SecurityError** gracefully with user guidance
+7. 🔄 **Rotate credentials** regularly using your secret backend
+8. 📁 **Restrict namespace access** in Kubernetes deployments
 
 ---
 
@@ -521,6 +616,7 @@ func (s *SecureToolServer) ExecuteTool(name string, params map[string]any) (any,
 - 🤖 **Agent-Ready**: Built for autonomous AI systems
 - 🔌 **MCP Compatible**: Secure tool credential management
 - 📋 **Flexible Policies**: From development to high-security production
+- 🏢 **Enterprise Ready**: File-based config with locked fields for org control
 
 ---
 
@@ -529,6 +625,7 @@ func (s *SecureToolServer) ExecuteTool(name string, params map[string]any) (any,
 ## Resources
 
 - 📦 **GitHub**: github.com/agentplexus/vaultguard
+- 📚 **Docs**: agentplexus.github.io/vaultguard
 - 🔗 **Dependencies**:
   - github.com/agentplexus/posture
   - github.com/agentplexus/omnivault
