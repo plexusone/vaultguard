@@ -10,10 +10,10 @@ Security-gated credential access for Go applications. Combines [Posture](https:/
 
 ## Features
 
-- **Automatic Environment Detection** - Detects local workstations, AWS EKS, GCP GKE, Azure AKS, Lambda, Cloud Run, and more
-- **Security Policy Enforcement** - Define security requirements that must be met before credentials are accessed
-- **Provider Auto-Selection** - Automatically uses the right secret provider for each environment
-- **Cross-Platform** - Works on macOS, Windows, Linux, and all major cloud platforms
+- 🔍 **Automatic Environment Detection** - Detects local workstations, AWS EKS, GCP GKE, Azure AKS, Lambda, Cloud Run, and more
+- 🛡️ **Security Policy Enforcement** - Define security requirements that must be met before credentials are accessed
+- ⚡ **Provider Auto-Selection** - Automatically uses the right secret provider for each environment
+- 🌐 **Cross-Platform** - Works on macOS, Windows, Linux, and all major cloud platforms
 
 ## Quick Start
 
