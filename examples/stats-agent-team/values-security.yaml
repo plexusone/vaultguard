@@ -1,0 +1,176 @@
+# OmniSafe Security Configuration for stats-agent-team
+# Add this section to your existing values.yaml or values-eks.yaml
+
+# =============================================================================
+# SECURITY CONFIGURATION (OmniSafe Integration)
+# =============================================================================
+security:
+  # Enable OmniSafe security checks
+  enabled: true
+
+  # -----------------------------------------------------------------------------
+  # Local Workstation Security (when running locally or in dev)
+  # Uses OmniTrust to verify workstation security posture
+  # -----------------------------------------------------------------------------
+  local:
+    # Minimum security score (0-100) required to access credentials
+    # 0 = no minimum, 50 = moderate, 75 = strict
+    minSecurityScore: 50
+
+    # Require disk encryption (FileVault on macOS, BitLocker on Windows)
+    requireEncryption: true
+
+    # Require hardware security (Secure Enclave on macOS, TPM on Windows/Linux)
+    requireTPM: false
+
+    # Require Secure Boot to be enabled
+    requireSecureBoot: false
+
+    # Require biometric authentication to be configured
+    requireBiometrics: false
+
+  # -----------------------------------------------------------------------------
+  # Cloud Security (AWS EKS, GCP GKE, Azure AKS)
+  # Validates cloud IAM configuration before allowing credential access
+  # -----------------------------------------------------------------------------
+  cloud:
+    # Require cloud IAM (IRSA, Workload Identity) to be configured
+    requireIAM: true
+
+    # AWS-specific settings
+    aws:
+      # Require IRSA (IAM Roles for Service Accounts) on EKS
+      requireIRSA: true
+
+      # Whitelist of allowed IAM role ARNs (supports wildcards)
+      # Leave empty to allow any role
+      allowedRoleARNs: []
+      # allowedRoleARNs:
+      #   - "arn:aws:iam::123456789012:role/stats-agent-*"
+      #   - "arn:aws:iam::123456789012:role/production-agents"
+
+      # Whitelist of allowed AWS account IDs
+      allowedAccountIDs: []
+      # allowedAccountIDs:
+      #   - "123456789012"
+
+      # Allowed AWS regions
+      allowedRegions: []
+      # allowedRegions:
+      #   - "us-east-1"
+      #   - "us-west-2"
+
+      # Require IMDSv2 for EC2 metadata
+      requireIMDSv2: false
+
+    # GCP-specific settings
+    gcp:
+      # Require Workload Identity on GKE
+      requireWorkloadIdentity: true
+
+      # Whitelist of allowed GCP service accounts
+      allowedServiceAccounts: []
+
+      # Whitelist of allowed GCP projects
+      allowedProjects: []
+
+    # Azure-specific settings
+    azure:
+      # Require Workload Identity on AKS
+      requireWorkloadIdentity: true
+
+      # Whitelist of allowed Azure AD client IDs
+      allowedClientIDs: []
+
+      # Whitelist of allowed Azure AD tenant IDs
+      allowedTenantIDs: []
+
+  # -----------------------------------------------------------------------------
+  # Kubernetes Security
+  # Validates pod security context and namespace restrictions
+  # -----------------------------------------------------------------------------
+  kubernetes:
+    # Require a specific service account (not default)
+    requireServiceAccount: false
+
+    # Whitelist of allowed service accounts
+    allowedServiceAccounts: []
+
+    # Whitelist of allowed namespaces
+    allowedNamespaces: []
+    # allowedNamespaces:
+    #   - "stats-agents"
+    #   - "production"
+
+    # Blacklist of denied namespaces (takes precedence over allowed)
+    deniedNamespaces:
+      - "default"
+      - "kube-system"
+      - "kube-public"
+
+    # Require pod to run as non-root
+    requireNonRoot: true
+
+    # Require read-only root filesystem
+    requireReadOnlyRoot: false
+
+  # -----------------------------------------------------------------------------
+  # Development Overrides
+  # WARNING: Only use for local development!
+  # -----------------------------------------------------------------------------
+  development:
+    # Allow insecure mode (bypasses all security checks)
+    # Set to true only for local development
+    allowInsecure: false
+
+    # Reason for allowing insecure mode (for audit logs)
+    insecureReason: ""
+
+# =============================================================================
+# ENVIRONMENT VARIABLES (injected from security config)
+# =============================================================================
+# These are automatically set based on security.* values above
+
+env:
+  # OmniSafe configuration
+  - name: OMNISAFE_ENABLED
+    value: "{{ .Values.security.enabled }}"
+  - name: OMNISAFE_MIN_SCORE
+    value: "{{ .Values.security.local.minSecurityScore }}"
+  - name: OMNISAFE_REQUIRE_ENCRYPTION
+    value: "{{ .Values.security.local.requireEncryption }}"
+  - name: OMNISAFE_REQUIRE_IRSA
+    value: "{{ .Values.security.cloud.aws.requireIRSA }}"
+  - name: OMNISAFE_DENIED_NAMESPACES
+    value: "{{ join \",\" .Values.security.kubernetes.deniedNamespaces }}"
+  - name: OMNISAFE_ALLOW_INSECURE
+    value: "{{ .Values.security.development.allowInsecure }}"
+
+# =============================================================================
+# EXAMPLE: Complete values-eks.yaml with security
+# =============================================================================
+#
+# # Include base EKS values
+# # ... (existing values-eks.yaml content)
+#
+# # Add security configuration
+# security:
+#   enabled: true
+#   local:
+#     minSecurityScore: 0  # Not applicable in EKS
+#   cloud:
+#     requireIAM: true
+#     aws:
+#       requireIRSA: true
+#       allowedRoleARNs:
+#         - "arn:aws:iam::123456789012:role/stats-agent-research"
+#         - "arn:aws:iam::123456789012:role/stats-agent-synthesis"
+#         - "arn:aws:iam::123456789012:role/stats-agent-verification"
+#         - "arn:aws:iam::123456789012:role/stats-agent-orchestration"
+#   kubernetes:
+#     deniedNamespaces:
+#       - "default"
+#       - "kube-system"
+#     requireNonRoot: true
+#   development:
+#     allowInsecure: false
