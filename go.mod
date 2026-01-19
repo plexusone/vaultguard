@@ -3,7 +3,7 @@ module github.com/agentplexus/vaultguard
 go 1.24.0
 
 require (
-	github.com/agentplexus/omnivault v0.1.0
+	github.com/agentplexus/omnivault v0.2.0
 	github.com/agentplexus/posture v0.2.0
 )
 
@@ -19,5 +19,5 @@ require (
 	github.com/tklauser/go-sysconf v0.3.16 // indirect
 	github.com/tklauser/numcpus v0.11.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/sys v0.40.0 // indirect
 )
