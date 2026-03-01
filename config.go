@@ -53,6 +53,7 @@ func userConfigPath() string {
 
 // LoadPolicyFromFile loads a policy from a specific file path.
 func LoadPolicyFromFile(path string) (*FilePolicy, error) {
+	// #nosec G703 -- path is intentionally caller-provided for policy file loading
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err

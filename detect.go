@@ -62,6 +62,7 @@ func isEKS() bool {
 
 	if roleARN != "" && tokenFile != "" {
 		// Verify token file exists
+		// #nosec G703 -- tokenFile from AWS_WEB_IDENTITY_TOKEN_FILE is AWS SDK standard
 		if _, err := os.Stat(tokenFile); err == nil {
 			return true
 		}
@@ -118,6 +119,7 @@ func isAKS() bool {
 
 	if clientID != "" && tenantID != "" && tokenFile != "" {
 		// Verify token file exists
+		// #nosec G703 -- tokenFile from AZURE_FEDERATED_TOKEN_FILE is Azure SDK standard
 		if _, err := os.Stat(tokenFile); err == nil {
 			return true
 		}
