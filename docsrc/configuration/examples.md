@@ -4,7 +4,7 @@ This page provides ready-to-use policy configuration files for common scenarios.
 
 ## User Configurations
 
-These go in `~/.agentplexus/policy.json` (Linux/macOS) or `%USERPROFILE%\.agentplexus\policy.json` (Windows).
+These go in `~/.plexusone/policy.json` (Linux/macOS) or `%USERPROFILE%\.plexusone\policy.json` (Windows).
 
 ### Minimal User Policy
 
@@ -102,7 +102,7 @@ For development containers or CI:
 
 ## Enterprise Configurations
 
-These go in `/etc/agentplexus/policy.json` (Linux/macOS) or `%ProgramData%\agentplexus\policy.json` (Windows).
+These go in `/etc/plexusone/policy.json` (Linux/macOS) or `%ProgramData%\plexusone\policy.json` (Windows).
 
 ### Basic Enterprise Policy
 
@@ -320,7 +320,7 @@ For organizations using multiple cloud providers:
 
 ### Production
 
-Use with `AGENTPLEXUS_POLICY_FILE=/etc/agentplexus/production.json`:
+Use with `AGENTPLEXUS_POLICY_FILE=/etc/plexusone/production.json`:
 
 ```json
 {
@@ -349,7 +349,7 @@ Use with `AGENTPLEXUS_POLICY_FILE=/etc/agentplexus/production.json`:
 
 ### Staging
 
-Use with `AGENTPLEXUS_POLICY_FILE=/etc/agentplexus/staging.json`:
+Use with `AGENTPLEXUS_POLICY_FILE=/etc/plexusone/staging.json`:
 
 ```json
 {
@@ -409,10 +409,10 @@ Use with `AGENTPLEXUS_POLICY_FILE` set in CI environment:
 set -e
 
 # Create directory
-sudo mkdir -p /etc/agentplexus
+sudo mkdir -p /etc/plexusone
 
 # Deploy policy
-sudo tee /etc/agentplexus/policy.json > /dev/null << 'EOF'
+sudo tee /etc/plexusone/policy.json > /dev/null << 'EOF'
 {
   "version": 1,
   "local": {
@@ -427,7 +427,7 @@ sudo tee /etc/agentplexus/policy.json > /dev/null << 'EOF'
 EOF
 
 # Set permissions
-sudo chmod 644 /etc/agentplexus/policy.json
+sudo chmod 644 /etc/plexusone/policy.json
 
 echo "Enterprise policy deployed successfully"
 ```
@@ -436,7 +436,7 @@ echo "Enterprise policy deployed successfully"
 
 ```powershell
 # Create directory
-$policyDir = "$env:ProgramData\agentplexus"
+$policyDir = "$env:ProgramData\plexusone"
 New-Item -ItemType Directory -Force -Path $policyDir | Out-Null
 
 # Deploy policy

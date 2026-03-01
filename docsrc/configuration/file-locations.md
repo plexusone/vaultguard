@@ -7,7 +7,7 @@ VaultGuard loads policy configuration from files in a specific order, allowing b
 Policies are loaded in this order (highest precedence first):
 
 1. **Environment Variable** - `AGENTPLEXUS_POLICY_FILE`
-2. **User Config** - `~/.agentplexus/policy.json`
+2. **User Config** - `~/.plexusone/policy.json`
 3. **System Config** - Platform-specific (see below)
 4. **No Config** - Permissive mode (no policy enforcement)
 
@@ -17,27 +17,27 @@ Policies are loaded in this order (highest precedence first):
 
 | Type | Path |
 |------|------|
-| System (Enterprise) | `/etc/agentplexus/policy.json` |
-| User | `~/.agentplexus/policy.json` |
+| System (Enterprise) | `/etc/plexusone/policy.json` |
+| User | `~/.plexusone/policy.json` |
 
 ### macOS
 
 | Type | Path |
 |------|------|
-| System (Enterprise) | `/etc/agentplexus/policy.json` |
-| User | `~/.agentplexus/policy.json` |
+| System (Enterprise) | `/etc/plexusone/policy.json` |
+| User | `~/.plexusone/policy.json` |
 
 ### Windows
 
 | Type | Path |
 |------|------|
-| System (Enterprise) | `%ProgramData%\agentplexus\policy.json` |
-| User | `%USERPROFILE%\.agentplexus\policy.json` |
+| System (Enterprise) | `%ProgramData%\plexusone\policy.json` |
+| User | `%USERPROFILE%\.plexusone\policy.json` |
 
 Typical resolved paths on Windows:
 
-- System: `C:\ProgramData\agentplexus\policy.json`
-- User: `C:\Users\<username>\.agentplexus\policy.json`
+- System: `C:\ProgramData\plexusone\policy.json`
+- User: `C:\Users\<username>\.plexusone\policy.json`
 
 ## Environment Variable Override
 
@@ -67,17 +67,17 @@ When set, this overrides both system and user configuration files.
 
 ```
 # Linux/macOS
-/etc/agentplexus/
+/etc/plexusone/
 └── policy.json          # Enterprise policy
 
-~/.agentplexus/
+~/.plexusone/
 └── policy.json          # User policy
 
 # Windows
-C:\ProgramData\agentplexus\
+C:\ProgramData\plexusone\
 └── policy.json          # Enterprise policy
 
-C:\Users\<username>\.agentplexus\
+C:\Users\<username>\.plexusone\
 └── policy.json          # User policy
 ```
 
@@ -91,7 +91,7 @@ if err != nil {
     log.Fatal(err)
 }
 fmt.Printf("Config directory: %s\n", configDir)
-// Output: Config directory: /home/user/.agentplexus
+// Output: Config directory: /home/user/.plexusone
 ```
 
 The directory is created with mode `0700` (owner read/write/execute only).
@@ -113,7 +113,7 @@ if err := vaultguard.SavePolicy(policy); err != nil {
 }
 ```
 
-This creates `~/.agentplexus/policy.json` with mode `0600` (owner read/write only).
+This creates `~/.plexusone/policy.json` with mode `0600` (owner read/write only).
 
 ## Checking Active Paths
 
@@ -129,8 +129,8 @@ fmt.Printf("Env: %s\n", paths["env"])
 Example output on Linux:
 
 ```
-System: /etc/agentplexus/policy.json
-User: /home/user/.agentplexus/policy.json
+System: /etc/plexusone/policy.json
+User: /home/user/.plexusone/policy.json
 Env:
 ```
 
@@ -182,23 +182,23 @@ fmt.Printf("Locked fields: %v\n", filePolicy.Locked)
 
     ```bash
     # System policy (readable by all, writable by root)
-    sudo chmod 644 /etc/agentplexus/policy.json
+    sudo chmod 644 /etc/plexusone/policy.json
 
     # User policy (readable/writable by owner only)
-    chmod 600 ~/.agentplexus/policy.json
-    chmod 700 ~/.agentplexus
+    chmod 600 ~/.plexusone/policy.json
+    chmod 700 ~/.plexusone
     ```
 
 === "Windows (PowerShell)"
 
     ```powershell
     # User policy - restrict to current user
-    $acl = Get-Acl "$env:USERPROFILE\.agentplexus\policy.json"
+    $acl = Get-Acl "$env:USERPROFILE\.plexusone\policy.json"
     $acl.SetAccessRuleProtection($true, $false)
     $rule = New-Object System.Security.AccessControl.FileSystemAccessRule(
         $env:USERNAME, "FullControl", "Allow")
     $acl.AddAccessRule($rule)
-    Set-Acl "$env:USERPROFILE\.agentplexus\policy.json" $acl
+    Set-Acl "$env:USERPROFILE\.plexusone\policy.json" $acl
     ```
 
 ## Merge Behavior
@@ -220,11 +220,11 @@ Check if files exist and are readable:
 
 ```bash
 # Linux/macOS
-ls -la /etc/agentplexus/policy.json
-ls -la ~/.agentplexus/policy.json
+ls -la /etc/plexusone/policy.json
+ls -la ~/.plexusone/policy.json
 
 # Check JSON validity
-cat ~/.agentplexus/policy.json | jq .
+cat ~/.plexusone/policy.json | jq .
 ```
 
 ### Wrong Policy Applied
@@ -244,11 +244,11 @@ Ensure proper ownership and permissions:
 
 ```bash
 # Fix user directory ownership
-sudo chown -R $USER:$USER ~/.agentplexus
+sudo chown -R $USER:$USER ~/.plexusone
 
 # Fix permissions
-chmod 700 ~/.agentplexus
-chmod 600 ~/.agentplexus/policy.json
+chmod 700 ~/.plexusone
+chmod 600 ~/.plexusone/policy.json
 ```
 
 ## Next Steps

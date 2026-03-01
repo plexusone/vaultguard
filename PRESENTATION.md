@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: agentplexus
+theme: plexusone
 paginate: true
 ---
 
@@ -143,8 +143,8 @@ vaultguard.StrictPolicy()
 Configuration Hierarchy (highest precedence first):
 
 1. 🔧 AGENTPLEXUS_POLICY_FILE environment variable
-2. 👤 User config:   ~/.agentplexus/policy.json
-3. 🏢 System config: /etc/agentplexus/policy.json
+2. 👤 User config:   ~/.plexusone/policy.json
+3. 🏢 System config: /etc/plexusone/policy.json
 ```
 
 ```go
@@ -162,7 +162,7 @@ sv, err := vaultguard.New(&vaultguard.Config{
 
 ## Personal Preferences
 
-`~/.agentplexus/policy.json`:
+`~/.plexusone/policy.json`:
 
 ```json
 {
@@ -185,7 +185,7 @@ sv, err := vaultguard.New(&vaultguard.Config{
 
 ## Organization-Wide Enforcement
 
-`/etc/agentplexus/policy.json`:
+`/etc/plexusone/policy.json`:
 
 ```json
 {
@@ -523,13 +523,13 @@ Policy: &vaultguard.Policy{
 
 ```bash
 # 📥 Install
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ```go
 package main
 
-import "github.com/agentplexus/vaultguard"
+import "github.com/plexusone/vaultguard"
 
 func main() {
     sv, err := vaultguard.Quick()  // 🛡️ Security-gated
@@ -624,14 +624,14 @@ func (s *SecureToolServer) ExecuteTool(name string, params map[string]any) (any,
 
 ## Resources
 
-- 📦 **GitHub**: github.com/agentplexus/vaultguard
-- 📚 **Docs**: agentplexus.github.io/vaultguard
+- 📦 **GitHub**: github.com/plexusone/vaultguard
+- 📚 **Docs**: plexusone.github.io/vaultguard
 - 🔗 **Dependencies**:
-  - github.com/agentplexus/posture
-  - github.com/agentplexus/omnivault
+  - github.com/plexusone/posture
+  - github.com/plexusone/omnivault
 
 ```go
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ---

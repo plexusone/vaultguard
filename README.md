@@ -6,7 +6,7 @@
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
 
-Security-gated credential access for Go applications. Combines [Posture](https://github.com/agentplexus/posture) (security posture assessment) with [OmniVault](https://github.com/agentplexus/omnivault) (secret management) to provide environment-aware secure credential handling.
+Security-gated credential access for Go applications. Combines [Posture](https://github.com/plexusone/posture) (security posture assessment) with [OmniVault](https://github.com/plexusone/omnivault) (secret management) to provide environment-aware secure credential handling.
 
 ## Features
 
@@ -24,7 +24,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/vaultguard"
+    "github.com/plexusone/vaultguard"
 )
 
 func main() {
@@ -111,8 +111,8 @@ Policies can be loaded from JSON configuration files, supporting both user prefe
 Policies are loaded in order of precedence (highest first):
 
 1. `AGENTPLEXUS_POLICY_FILE` environment variable
-2. User config: `~/.agentplexus/policy.json`
-3. System config: `/etc/agentplexus/policy.json` (Linux/macOS) or `%ProgramData%\agentplexus\policy.json` (Windows)
+2. User config: `~/.plexusone/policy.json`
+3. System config: `/etc/plexusone/policy.json` (Linux/macOS) or `%ProgramData%\plexusone\policy.json` (Windows)
 
 ```go
 // Load policy from configuration files
@@ -128,7 +128,7 @@ sv, err := vaultguard.New(&vaultguard.Config{
 
 ### User Configuration Example
 
-`~/.agentplexus/policy.json`:
+`~/.plexusone/policy.json`:
 ```json
 {
   "version": 1,
@@ -146,7 +146,7 @@ sv, err := vaultguard.New(&vaultguard.Config{
 
 System administrators can deploy organization-wide policies with locked fields that users cannot override.
 
-`/etc/agentplexus/policy.json`:
+`/etc/plexusone/policy.json`:
 ```json
 {
   "version": 1,
@@ -235,7 +235,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/vaultguard"
+    "github.com/plexusone/vaultguard"
 )
 
 func main() {
@@ -276,37 +276,37 @@ func main() {
 ## Installation
 
 ```bash
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ## Documentation
 
-Full documentation is available at [agentplexus.github.io/vaultguard](https://agentplexus.github.io/vaultguard) including:
+Full documentation is available at [plexusone.github.io/vaultguard](https://plexusone.github.io/vaultguard) including:
 
-- [Getting Started Guide](https://agentplexus.github.io/vaultguard/getting-started/)
-- [Policy Overview](https://agentplexus.github.io/vaultguard/policies/overview/)
-- [Enterprise Configuration](https://agentplexus.github.io/vaultguard/policies/enterprise/)
-- [Example Configs](https://agentplexus.github.io/vaultguard/configuration/examples/)
-- [JSON Schema Reference](https://agentplexus.github.io/vaultguard/reference/json-schema/)
+- [Getting Started Guide](https://plexusone.github.io/vaultguard/getting-started/)
+- [Policy Overview](https://plexusone.github.io/vaultguard/policies/overview/)
+- [Enterprise Configuration](https://plexusone.github.io/vaultguard/policies/enterprise/)
+- [Example Configs](https://plexusone.github.io/vaultguard/configuration/examples/)
+- [JSON Schema Reference](https://plexusone.github.io/vaultguard/reference/json-schema/)
 
 ## Dependencies
 
-- [Posture](https://github.com/agentplexus/posture) - Security posture assessment
-- [OmniVault](https://github.com/agentplexus/omnivault) - Secret management
+- [Posture](https://github.com/plexusone/posture) - Security posture assessment
+- [OmniVault](https://github.com/plexusone/omnivault) - Secret management
 
 ## License
 
 MIT License
 
- [build-status-svg]: https://github.com/agentplexus/vaultguard/actions/workflows/ci.yaml/badge.svg?branch=main
- [build-status-url]: https://github.com/agentplexus/vaultguard/actions/workflows/ci.yaml
- [lint-status-svg]: https://github.com/agentplexus/vaultguard/actions/workflows/lint.yaml/badge.svg?branch=main
- [lint-status-url]: https://github.com/agentplexus/vaultguard/actions/workflows/lint.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/vaultguard
- [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/vaultguard
- [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/vaultguard
- [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/vaultguard
+ [build-status-svg]: https://github.com/plexusone/vaultguard/actions/workflows/ci.yaml/badge.svg?branch=main
+ [build-status-url]: https://github.com/plexusone/vaultguard/actions/workflows/ci.yaml
+ [lint-status-svg]: https://github.com/plexusone/vaultguard/actions/workflows/lint.yaml/badge.svg?branch=main
+ [lint-status-url]: https://github.com/plexusone/vaultguard/actions/workflows/lint.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/plexusone/vaultguard
+ [goreport-url]: https://goreportcard.com/report/github.com/plexusone/vaultguard
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/plexusone/vaultguard
+ [docs-godoc-url]: https://pkg.go.dev/github.com/plexusone/vaultguard
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/agentplexus/vaultguard/blob/master/LICENSE
- [used-by-svg]: https://sourcegraph.com/github.com/agentplexus/vaultguard/-/badge.svg
- [used-by-url]: https://sourcegraph.com/github.com/agentplexus/vaultguard?badge
+ [license-url]: https://github.com/plexusone/vaultguard/blob/master/LICENSE
+ [used-by-svg]: https://sourcegraph.com/github.com/plexusone/vaultguard/-/badge.svg
+ [used-by-url]: https://sourcegraph.com/github.com/plexusone/vaultguard?badge

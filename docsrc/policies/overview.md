@@ -138,8 +138,8 @@ policy, err := vaultguard.LoadPolicy()
 Loads from (in order of precedence):
 
 1. `AGENTPLEXUS_POLICY_FILE` environment variable
-2. `~/.agentplexus/policy.json` (user config)
-3. `/etc/agentplexus/policy.json` (system/enterprise config)
+2. `~/.plexusone/policy.json` (user config)
+3. `/etc/plexusone/policy.json` (system/enterprise config)
 
 See [File Locations](../configuration/file-locations.md) for platform-specific paths.
 
@@ -153,7 +153,7 @@ When both system (enterprise) and user configuration files exist, they are merge
 - `AllowInsecure` can only become *more* restrictive, never more permissive
 
 ```json
-// /etc/agentplexus/policy.json (system)
+// /etc/plexusone/policy.json (system)
 {
   "version": 1,
   "local": {
@@ -165,7 +165,7 @@ When both system (enterprise) and user configuration files exist, they are merge
 ```
 
 ```json
-// ~/.agentplexus/policy.json (user)
+// ~/.plexusone/policy.json (user)
 {
   "version": 1,
   "local": {

@@ -8,8 +8,8 @@ VaultGuard supports a two-tier configuration system:
 
 | Layer | Location | Purpose |
 |-------|----------|---------|
-| **System/Enterprise** | `/etc/agentplexus/policy.json` | Organization-wide defaults and enforced settings |
-| **User** | `~/.agentplexus/policy.json` | Personal preferences (within enterprise constraints) |
+| **System/Enterprise** | `/etc/plexusone/policy.json` | Organization-wide defaults and enforced settings |
+| **User** | `~/.plexusone/policy.json` | Personal preferences (within enterprise constraints) |
 
 When both exist, they are merged with enterprise settings taking precedence on locked fields.
 
@@ -231,10 +231,10 @@ Users can change the local provider but not cloud providers.
 
 ```bash
 # Create directory
-sudo mkdir -p /etc/agentplexus
+sudo mkdir -p /etc/plexusone
 
 # Create policy file
-sudo cat > /etc/agentplexus/policy.json << 'EOF'
+sudo cat > /etc/plexusone/policy.json << 'EOF'
 {
   "version": 1,
   "local": {
@@ -249,14 +249,14 @@ sudo cat > /etc/agentplexus/policy.json << 'EOF'
 EOF
 
 # Set permissions
-sudo chmod 644 /etc/agentplexus/policy.json
+sudo chmod 644 /etc/plexusone/policy.json
 ```
 
 ### Windows
 
 ```powershell
 # Create directory
-New-Item -ItemType Directory -Force -Path "$env:ProgramData\agentplexus"
+New-Item -ItemType Directory -Force -Path "$env:ProgramData\plexusone"
 
 # Create policy file
 @"
@@ -271,7 +271,7 @@ New-Item -ItemType Directory -Force -Path "$env:ProgramData\agentplexus"
   },
   "locked": ["local.require_encryption", "cloud.require_iam"]
 }
-"@ | Out-File -FilePath "$env:ProgramData\agentplexus\policy.json" -Encoding UTF8
+"@ | Out-File -FilePath "$env:ProgramData\plexusone\policy.json" -Encoding UTF8
 ```
 
 ### Configuration Management
@@ -283,13 +283,13 @@ Deploy via your preferred configuration management tool:
 - name: Deploy VaultGuard enterprise policy
   copy:
     src: files/vaultguard-policy.json
-    dest: /etc/agentplexus/policy.json
+    dest: /etc/plexusone/policy.json
     mode: '0644'
 ```
 
 **Puppet:**
 ```puppet
-file { '/etc/agentplexus/policy.json':
+file { '/etc/plexusone/policy.json':
   ensure  => file,
   source  => 'puppet:///modules/vaultguard/policy.json',
   mode    => '0644',
@@ -298,7 +298,7 @@ file { '/etc/agentplexus/policy.json':
 
 **Chef:**
 ```ruby
-cookbook_file '/etc/agentplexus/policy.json' do
+cookbook_file '/etc/plexusone/policy.json' do
   source 'policy.json'
   mode '0644'
 end

@@ -2,7 +2,7 @@
 
 **Security-gated credential access for Go applications**
 
-VaultGuard combines [Posture](https://github.com/agentplexus/posture) (security posture assessment) with [OmniVault](https://github.com/agentplexus/omnivault) (secret management) to provide environment-aware secure credential handling.
+VaultGuard combines [Posture](https://github.com/plexusone/posture) (security posture assessment) with [OmniVault](https://github.com/plexusone/omnivault) (secret management) to provide environment-aware secure credential handling.
 
 ## Key Features
 
@@ -46,7 +46,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/vaultguard"
+    "github.com/plexusone/vaultguard"
 )
 
 func main() {
@@ -85,7 +85,7 @@ func main() {
 ## Installation
 
 ```bash
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ## Next Steps

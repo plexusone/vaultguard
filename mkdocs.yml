@@ -1,8 +1,8 @@
 site_name: VaultGuard
 site_description: Security-gated credential access for Go applications
-site_url: https://agentplexus.github.io/vaultguard
-repo_url: https://github.com/agentplexus/vaultguard
-repo_name: agentplexus/vaultguard
+site_url: https://plexusone.github.io/vaultguard
+repo_url: https://github.com/plexusone/vaultguard
+repo_name: plexusone/vaultguard
 
 docs_dir: docsrc
 site_dir: docs
@@ -62,4 +62,4 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/agentplexus/vaultguard
+      link: https://github.com/plexusone/vaultguard

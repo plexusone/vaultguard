@@ -53,7 +53,7 @@ version: 1.0.0
 dependencies:
   - name: agent-base
     version: "1.0.0"
-    repository: "https://charts.agentplexus.io"
+    repository: "https://charts.plexusone.io"
 ```
 
 ```yaml
@@ -63,7 +63,7 @@ agent-base:
   agents:
     research:
       enabled: true
-      image: ghcr.io/agentplexus/stats-agent-team:latest
+      image: ghcr.io/plexusone/stats-agent-team:latest
       command: ["/app/research"]
       ports:
         http: 8001
@@ -71,21 +71,21 @@ agent-base:
 
     synthesis:
       enabled: true
-      image: ghcr.io/agentplexus/stats-agent-team:latest
+      image: ghcr.io/plexusone/stats-agent-team:latest
       command: ["/app/synthesis"]
       ports:
         http: 8004
 
     verification:
       enabled: true
-      image: ghcr.io/agentplexus/stats-agent-team:latest
+      image: ghcr.io/plexusone/stats-agent-team:latest
       command: ["/app/verification"]
       ports:
         http: 8002
 
     orchestration:
       enabled: true
-      image: ghcr.io/agentplexus/stats-agent-team:latest
+      image: ghcr.io/plexusone/stats-agent-team:latest
       command: ["/app/orchestration-eino"]
       ports:
         http: 8000
@@ -228,7 +228,7 @@ data:
 ## Proposed Repository Structure
 
 ```
-github.com/agentplexus/
+github.com/plexusone/
 ├── omnisafe/           # Security integration library
 ├── omnitrust/          # Security posture assessment
 ├── omnivault/          # Secret management

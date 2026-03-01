@@ -5,7 +5,7 @@ This guide covers installing VaultGuard and your first secure credential access.
 ## Installation
 
 ```bash
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ## Basic Usage
@@ -21,7 +21,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/vaultguard"
+    "github.com/plexusone/vaultguard"
 )
 
 func main() {
@@ -175,8 +175,8 @@ VaultGuard can load policies from configuration files, allowing separation of po
 ```go
 // Loads policy from:
 // 1. AGENTPLEXUS_POLICY_FILE env var (if set)
-// 2. ~/.agentplexus/policy.json (user config)
-// 3. /etc/agentplexus/policy.json (system config)
+// 2. ~/.plexusone/policy.json (user config)
+// 3. /etc/plexusone/policy.json (system config)
 policy, err := vaultguard.LoadPolicy()
 if err != nil {
     log.Fatal(err)

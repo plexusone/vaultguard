@@ -72,7 +72,7 @@ VaultGuard v0.1.0 is the initial release of the security-gated credential access
 ## Installation
 
 ```bash
-go get github.com/agentplexus/vaultguard
+go get github.com/plexusone/vaultguard
 ```
 
 ## Quick Start
@@ -84,7 +84,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/vaultguard"
+    "github.com/plexusone/vaultguard"
 )
 
 func main() {
@@ -109,8 +109,8 @@ func main() {
 
 ## Dependencies
 
-- `github.com/agentplexus/posture v0.2.0` - Security posture assessment
-- `github.com/agentplexus/omnivault v0.1.0` - Secret management abstraction
+- `github.com/plexusone/posture v0.2.0` - Security posture assessment
+- `github.com/plexusone/omnivault v0.1.0` - Secret management abstraction
 
 ## Examples
 
@@ -146,4 +146,4 @@ Planned for future releases:
 
 ---
 
-For issues and feature requests, please visit: https://github.com/agentplexus/vaultguard/issues
+For issues and feature requests, please visit: https://github.com/plexusone/vaultguard/issues

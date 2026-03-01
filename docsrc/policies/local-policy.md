@@ -1,6 +1,6 @@
 # Local Policy
 
-Local policies define security requirements for developer workstations running macOS, Windows, or Linux. These checks are performed using [Posture](https://github.com/agentplexus/posture), which assesses the security configuration of the local machine.
+Local policies define security requirements for developer workstations running macOS, Windows, or Linux. These checks are performed using [Posture](https://github.com/plexusone/posture), which assesses the security configuration of the local machine.
 
 ## Overview
 
@@ -21,7 +21,7 @@ type LocalPolicy struct {
 
 ### MinSecurityScore
 
-The minimum [Posture](https://github.com/agentplexus/posture) security score required (0-100).
+The minimum [Posture](https://github.com/plexusone/posture) security score required (0-100).
 
 | Score Range | Security Level | Typical Configuration |
 |-------------|----------------|----------------------|

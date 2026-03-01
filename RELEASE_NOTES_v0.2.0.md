@@ -31,9 +31,9 @@ Policies are loaded in order of precedence (highest first):
 | Priority | Source | Path |
 |----------|--------|------|
 | 1 | Environment Variable | `AGENTPLEXUS_POLICY_FILE` |
-| 2 | User Config | `~/.agentplexus/policy.json` |
-| 3 | System Config | `/etc/agentplexus/policy.json` (Linux/macOS) |
-| 3 | System Config | `%ProgramData%\agentplexus\policy.json` (Windows) |
+| 2 | User Config | `~/.plexusone/policy.json` |
+| 3 | System Config | `/etc/plexusone/policy.json` (Linux/macOS) |
+| 3 | System Config | `%ProgramData%\plexusone\policy.json` (Windows) |
 
 ### Enterprise Policies with Locked Fields
 
@@ -166,7 +166,7 @@ The following field paths can be locked by enterprise policies:
 
 ### User Configuration
 
-`~/.agentplexus/policy.json`:
+`~/.plexusone/policy.json`:
 
 ```json
 {
@@ -183,7 +183,7 @@ The following field paths can be locked by enterprise policies:
 
 ### Enterprise Configuration
 
-`/etc/agentplexus/policy.json`:
+`/etc/plexusone/policy.json`:
 
 ```json
 {
@@ -221,7 +221,7 @@ None. This release is fully backwards compatible with v0.1.0.
 
 No migration required. Existing code continues to work unchanged. To adopt file-based configuration:
 
-1. Create `~/.agentplexus/policy.json` (user) or `/etc/agentplexus/policy.json` (enterprise)
+1. Create `~/.plexusone/policy.json` (user) or `/etc/plexusone/policy.json` (enterprise)
 2. Replace inline `Policy` with `LoadPolicy()`:
 
 ```go
@@ -239,8 +239,8 @@ sv, err := vaultguard.New(&vaultguard.Config{
 
 ## Dependencies
 
-- `github.com/agentplexus/posture v0.2.0` - Security posture assessment
-- `github.com/agentplexus/omnivault v0.1.0` - Secret management abstraction
+- `github.com/plexusone/posture v0.2.0` - Security posture assessment
+- `github.com/plexusone/omnivault v0.1.0` - Secret management abstraction
 
 ## What's Next
 
@@ -258,4 +258,4 @@ Planned for future releases:
 
 ---
 
-For issues and feature requests, please visit: https://github.com/agentplexus/vaultguard/issues
+For issues and feature requests, please visit: https://github.com/plexusone/vaultguard/issues
