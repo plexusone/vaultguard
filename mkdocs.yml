@@ -4,8 +4,7 @@ site_url: https://plexusone.github.io/vaultguard
 repo_url: https://github.com/plexusone/vaultguard
 repo_name: plexusone/vaultguard
 
-docs_dir: docsrc
-site_dir: docs
+docs_dir: docs
 
 theme:
   name: material
