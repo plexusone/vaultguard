@@ -1,0 +1,64 @@
+{
+  "irVersion": "1.0",
+  "project": "vaultguard",
+  "repository": "https://github.com/plexusone/vaultguard",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "releases": [
+    {
+      "version": "v0.3.0",
+      "date": "2026-03-01",
+      "highlights": [
+        { "description": "Module path migrated from agentplexus to plexusone organization" }
+      ],
+      "breaking": [
+        { "description": "Module path changed from `github.com/agentplexus/vaultguard` to `github.com/plexusone/vaultguard`", "commit": "73433d4" }
+      ],
+      "changed": [
+        { "description": "Update omnivault dependency to `github.com/plexusone/omnivault` v0.3.0", "commit": "73433d4" },
+        { "description": "Update posture dependency to `github.com/plexusone/posture` v0.3.0", "commit": "73433d4" },
+        { "description": "Update all internal imports to use new module path", "commit": "73433d4" },
+        { "description": "Update documentation URLs to plexusone organization", "commit": "9d57d83" },
+        { "description": "Migrate to standard plexusone reusable workflows", "commit": "07e6f26" }
+      ],
+      "fixed": [
+        { "description": "Suppress gosec G703 false positives for policy file and SDK token paths", "commit": "63fe217" }
+      ]
+    },
+    {
+      "version": "v0.2.0",
+      "date": "2025-12-29",
+      "highlights": [
+        { "description": "File-based policy configuration for enterprise deployments" },
+        { "description": "MkDocs documentation site" }
+      ],
+      "added": [
+        { "description": "File-based policy configuration (`~/.vaultguard/policy.json`)", "commit": "4835d82" },
+        { "description": "Policy hierarchy: environment → file → embedded defaults", "commit": "4835d82" },
+        { "description": "MkDocs documentation site with Material theme", "commit": "4835d82" },
+        { "description": "Policy documentation for local, enterprise, and cloud deployments", "commit": "4835d82" }
+      ],
+      "documentation": [
+        { "description": "Add emoji icons to README Features section", "commit": "1912225" }
+      ]
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2025-12-28",
+      "highlights": [
+        { "description": "Security-gated credential access library for Go" },
+        { "description": "Hardware security verification via posture checks" },
+        { "description": "Multi-provider vault abstraction with OmniVault integration" }
+      ],
+      "added": [
+        { "description": "Core `vaultguard.Client` for security-gated credential access", "commit": "dacdaec" },
+        { "description": "Policy engine with configurable security requirements", "commit": "dacdaec" },
+        { "description": "Posture integration for TPM, Secure Boot, disk encryption, biometrics checks", "commit": "dacdaec" },
+        { "description": "Cloud environment detection (AWS, Azure, GCP, Kubernetes)", "commit": "dacdaec" },
+        { "description": "Local workstation security verification", "commit": "dacdaec" },
+        { "description": "OmniVault integration for multi-provider secret management", "commit": "dacdaec" },
+        { "description": "Convenience functions: `GetString`, `GetJSON`, `MustGetString`", "commit": "dacdaec" }
+      ]
+    }
+  ]
+}
