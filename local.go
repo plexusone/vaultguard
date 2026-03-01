@@ -5,7 +5,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/agentplexus/posture/inspector"
+	"github.com/plexusone/posture/inspector"
 )
 
 // CheckLocalSecurity performs security checks for local workstation environments

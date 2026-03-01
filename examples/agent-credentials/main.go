@@ -16,7 +16,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/agentplexus/vaultguard"
+	"github.com/plexusone/vaultguard"
 )
 
 func main() {

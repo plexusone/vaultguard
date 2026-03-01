@@ -11,7 +11,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/agentplexus/vaultguard"
+	"github.com/plexusone/vaultguard"
 )
 
 // Config represents the agent configuration (from stats-agent-team/pkg/config)

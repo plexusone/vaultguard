@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/agentplexus/omnivault"
-	"github.com/agentplexus/omnivault/vault"
+	"github.com/plexusone/omnivault"
+	"github.com/plexusone/omnivault/vault"
 )
 
 // SecureVault provides security-gated access to secrets.
