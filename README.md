@@ -8,6 +8,23 @@
 [![Visualization][viz-svg]][viz-url]
 [![License][license-svg]][license-url]
 
+ [go-ci-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-ci.yaml/badge.svg?branch=main
+ [go-ci-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-ci.yaml
+ [go-lint-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-lint.yaml/badge.svg?branch=main
+ [go-lint-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-lint.yaml
+ [go-sast-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-sast-codeql.yaml/badge.svg?branch=main
+ [go-sast-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-sast-codeql.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/plexusone/vaultguard
+ [goreport-url]: https://goreportcard.com/report/github.com/plexusone/vaultguard
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/plexusone/vaultguard
+ [docs-godoc-url]: https://pkg.go.dev/github.com/plexusone/vaultguard
+ [viz-svg]: https://img.shields.io/badge/visualizaton-Go-blue.svg
+ [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=plexusone%2Fvaultguard
+ [loc-svg]: https://tokei.rs/b1/github/plexusone/vaultguard
+ [repo-url]: https://github.com/plexusone/vaultguard
+ [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
+ [license-url]: https://github.com/plexusone/vaultguard/blob/master/LICENSE
+
 Security-gated credential access for Go applications. Combines [Posture](https://github.com/plexusone/posture) (security posture assessment) with [OmniVault](https://github.com/plexusone/omnivault) (secret management) to provide environment-aware secure credential handling.
 
 ## Features
@@ -299,20 +316,3 @@ Full documentation is available at [plexusone.github.io/vaultguard](https://plex
 ## License
 
 MIT License
-
- [go-ci-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-ci.yaml/badge.svg?branch=main
- [go-ci-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-ci.yaml
- [go-lint-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-lint.yaml/badge.svg?branch=main
- [go-lint-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-lint.yaml
- [go-sast-svg]: https://github.com/plexusone/vaultguard/actions/workflows/go-sast-codeql.yaml/badge.svg?branch=main
- [go-sast-url]: https://github.com/plexusone/vaultguard/actions/workflows/go-sast-codeql.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/plexusone/vaultguard
- [goreport-url]: https://goreportcard.com/report/github.com/plexusone/vaultguard
- [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/plexusone/vaultguard
- [docs-godoc-url]: https://pkg.go.dev/github.com/plexusone/vaultguard
- [viz-svg]: https://img.shields.io/badge/visualizaton-Go-blue.svg
- [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=plexusone%2Fvaultguard
- [loc-svg]: https://tokei.rs/b1/github/plexusone/vaultguard
- [repo-url]: https://github.com/plexusone/vaultguard
- [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/plexusone/vaultguard/blob/master/LICENSE
