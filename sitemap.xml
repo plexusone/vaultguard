@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://plexusone.github.io/vaultguard/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/getting-started/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/configuration/examples/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/configuration/file-locations/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/policies/cloud-policy/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/policies/enterprise/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/policies/kubernetes-policy/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/policies/local-policy/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/policies/overview/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/reference/json-schema/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/releases/v0.1.0/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/releases/v0.2.0/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/vaultguard/releases/v0.3.0/</loc>
-         <lastmod>2026-03-01</lastmod>
+         <lastmod>2026-04-13</lastmod>
     </url>
 </urlset>
