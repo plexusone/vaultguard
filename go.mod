@@ -3,8 +3,8 @@ module github.com/plexusone/vaultguard
 go 1.26.0
 
 require (
-	github.com/plexusone/omnivault v0.6.0
-	github.com/plexusone/posture v0.3.0
+	github.com/plexusone/omnivault v0.6.1
+	github.com/plexusone/posture v0.3.1
 )
 
 require (
